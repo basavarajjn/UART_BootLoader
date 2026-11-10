@@ -1,0 +1,17 @@
+21:53:41 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "UART_bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\UART_BootLoader\UART_bootloader\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UART_bootloader.elf
+ 
+arm-none-eabi-size  UART_bootloader.elf 
+arm-none-eabi-objdump -h -S UART_bootloader.elf  > "UART_bootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+   1100	      0	   1568	   2668	    a6c	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UART_bootloader.list
+ 
+
+21:53:54 Build Finished. 0 errors, 0 warnings. (took 12s.944ms)
+

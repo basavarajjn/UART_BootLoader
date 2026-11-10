@@ -1,0 +1,15 @@
+
+
+#include<stm32xx.h>
+
+void UART_GPIO_Init(void)
+{
+	RCC->AHB1ENR |= (1 << 0);
+	RCC->APB1ENR |= (1 << 17);
+
+	GPIOA->MODER &= ~(3 << 4);
+	GPIOA->MODER &= ~(3 << 6);
+	GPIOA->MODER |= (2 << 4);
+
+
+}

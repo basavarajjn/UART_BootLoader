@@ -1,0 +1,33 @@
+
+
+#include<stm32xx.h>
+
+void UART_GPIO_Init(void);
+void UART_Init(void);
+
+
+void UART_GPIO_Init(void)
+{
+	RCC->AHB1ENR |= (1 << 0);
+	RCC->APB1ENR |= (1 << 17);
+
+	GPIOA->MODER &= ~(3 << 4);
+	GPIOA->MODER &= ~(3 << 6);
+	GPIOA->MODER |= (2 << 4);
+	GPIOA->MODER |= (2 << 6);
+
+	GPIOA->AFR[0] &= ~(0x0F << 8);
+	GPIOA->AFR[0] &= ~(0x0F << 12);
+
+	GPIOA->AFR[0] |= (7 << 8);
+	GPIOA->AFR[0] |= (7 << 12);
+
+}
+
+
+void UART_Init(void)
+{
+    USART2->CR1	= 0;
+    USART2->BRR = 0x008B;
+    USART2->CR1 |= (1 << 2);
+}

@@ -1,0 +1,5 @@
+../Src/UART.c:8:6:UART_GPIO_Init	1
+../Src/UART.c:27:6:UART_Init	1
+../Src/UART.c:37:6:UART_Transmit_Char	2
+../Src/UART.c:44:6:UART_Transmit_String	2
+../Src/UART.c:54:9:UART_Receive_Data	2

@@ -1,0 +1,95 @@
+21:11:46 **** Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/UART.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/UART.d" -MT"Src/UART.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/UART.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "UART_bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\UART_BootLoader\UART_bootloader\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UART_bootloader.elf
+ 
+arm-none-eabi-size  UART_bootloader.elf 
+arm-none-eabi-objdump -h -S UART_bootloader.elf  > "UART_bootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+   1052	      0	   1568	   2620	    a3c	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UART_bootloader.list
+ 
+21:14:15 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-size  UART_bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1052	      0	   1568	   2620	    a3c	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+21:44:36 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/UART.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/UART.d" -MT"Src/UART.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/UART.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/UART.c: In function 'UART_Receive_Data':
+../Src/UART.c:57:5: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   57 |     while(!(USART2->SR & (1 << 5)));
+      |     ^~~~~
+../Src/UART.c:58:6: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   58 |      data = USART2->DR;
+      |      ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:33:41: warning: multi-character character constant [-Wmultichar]
+   33 |                    UART_Transmit_String('A\r\n');
+      |                                         ^~~~~~~
+../Src/main.c:33:41: warning: passing argument 1 of 'UART_Transmit_String' makes pointer from integer without a cast [-Wint-conversion]
+   33 |                    UART_Transmit_String('A\r\n');
+      |                                         ^~~~~~~
+      |                                         |
+      |                                         int
+In file included from ../Src/main.c:20:
+../Inc/UART.h:15:39: note: expected 'const char *' but argument is of type 'int'
+   15 | void UART_Transmit_String(const char *str);
+      |                           ~~~~~~~~~~~~^~~
+arm-none-eabi-gcc -o "UART_bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\UART_BootLoader\UART_bootloader\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UART_bootloader.elf
+ 
+arm-none-eabi-size  UART_bootloader.elf 
+arm-none-eabi-objdump -h -S UART_bootloader.elf  > "UART_bootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+   1096	      0	   1568	   2664	    a68	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UART_bootloader.list
+ 
+21:45:11 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-size  UART_bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1096	      0	   1568	   2664	    a68	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+21:46:12 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-size  UART_bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1096	      0	   1568	   2664	    a68	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+21:49:28 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-size  UART_bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1096	      0	   1568	   2664	    a68	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+21:53:41 **** Incremental Build of configuration Debug for project UART_bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "UART_bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\UART_BootLoader\UART_bootloader\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UART_bootloader.elf
+ 
+arm-none-eabi-size  UART_bootloader.elf 
+arm-none-eabi-objdump -h -S UART_bootloader.elf  > "UART_bootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+   1100	      0	   1568	   2668	    a6c	UART_bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UART_bootloader.list
+ 
